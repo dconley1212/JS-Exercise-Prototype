@@ -93,13 +93,18 @@ function Baby(name, age, favoriteToy) {
   this.favoriteToy = favoriteToy;
 }
 
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`;
+};
+
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. If we don't give 'this' any context than it will return the window, which is the global object in node, and undefined in strict mode.
+  2. Implicit binding, which is when this refers to the object left of the . on a method when invoked
+  3. Explicit Binding, is when you are explicitly telling the function to look for the keyword .call, .apply, or .bind method. When using .call you will immediately invoke the function and pass your arguments in 1 by 1. The .apply immediately invokes the function and has you pass in your arguments as an array. The .bind takes in arguments 1 by 1 but is not invoked and instead creates a new function that can be invoked later.
+  4. New Binding is when a function is invoked by a new keyword and the keyword is bound to the new object being created. Or when the constructor function is being invoked the keyword will be point to the new object being created.
 */
 
 ///////// END OF CHALLENGE /////////
